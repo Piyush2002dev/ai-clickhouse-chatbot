@@ -1,0 +1,2047 @@
+
+Traceback (most recent call last):
+  File "C:\Users\PIYUSH\Desktop\Chatbot\app.py", line 88, in main
+    response = db_chain.run(user_input)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 606, in run
+    return self(args[0], callbacks=callbacks, tags=tags, metadata=metadata)[
+           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 389, in __call__
+    return self.invoke(
+           ~~~~~~~~~~~^
+        inputs,
+        ^^^^^^^
+    ...<2 lines>...
+        include_run_info=include_run_info,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 170, in invoke
+    raise e
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 160, in invoke
+    self._call(inputs, run_manager=run_manager)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_experimental\sql\base.py", line 204, in _call
+    raise exc
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_experimental\sql\base.py", line 149, in _call
+    result = self.database.run(sql_cmd)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_community\utilities\sql_database.py", line 510, in run
+    result = self._execute(
+        command, fetch, parameters=parameters, execution_options=execution_options
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_community\utilities\sql_database.py", line 475, in _execute
+    cursor = connection.execute(
+        command,
+        parameters,
+        execution_options=execution_options,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1416, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 516, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise exc_info[1].with_traceback(exc_info[2])
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\base.py", line 488, in do_execute
+    cursor.execute(statement, parameters, context=context)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\http\connector.py", line 133, in execute
+    self._process_response(response_gen)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\http\connector.py", line 232, in _process_response
+    self._columns = next(response, None)
+                    ~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\http\transport.py", line 133, in execute
+    r = self._send(query, params=params, stream=True)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\http\transport.py", line 179, in _send
+    raise DatabaseException(orig)
+clickhouse_sqlalchemy.exceptions.DatabaseException: Orig exception: Code: 62. DB::Exception: Syntax error: failed at position 1 ('```sql
+SELECT DISTINCT Location
+FROM combined_coaching_form_data;
+```') (line 1, col 1): ```sql
+SELECT DISTINCT Location
+FROM combined_coaching_form_data;
+```. Expected one of: Query, Query with output, EXPLAIN, EXPLAIN, SELECT query, possibly with UNION, list of union elements, SELECT query, subquery, possibly with UNION, SELECT subquery, SELECT query, WITH, FROM, SELECT, SHOW CREATE QUOTA query, SHOW CREATE, SHOW [FULL] [TEMPORARY] TABLES|DATABASES|CLUSTERS|CLUSTER|MERGES 'name' [[NOT] [I]LIKE 'str'] [LIMIT expr], SHOW, SHOW COLUMNS query, SHOW ENGINES query, SHOW ENGINES, SHOW FUNCTIONS query, SHOW FUNCTIONS, SHOW INDEXES query, SHOW SETTING query, SHOW SETTING, EXISTS or SHOW CREATE query, EXISTS, DESCRIBE FILESYSTEM CACHE query, DESCRIBE, DESC, DESCRIBE query, SHOW PROCESSLIST query, SHOW PROCESSLIST, CREATE TABLE or ATTACH TABLE query, CREATE, ATTACH, REPLACE, CREATE DATABASE query, CREATE VIEW query, CREATE DICTIONARY, CREATE LIVE VIEW query, CREATE WINDOW VIEW query, ALTER query, ALTER TABLE, ALTER TEMPORARY TABLE, ALTER DATABASE, RENAME query, RENAME DATABASE, RENAME TABLE, EXCHANGE TABLES, RENAME DICTIONARY, EXCHANGE DICTIONARIES, RENAME, DROP query, DROP, DETACH, TRUNCATE, UNDROP query, UNDROP, CHECK ALL TABLES, CHECK TABLE, KILL QUERY query, KILL, OPTIMIZE query, OPTIMIZE TABLE, WATCH query, WATCH, SHOW ACCESS query, SHOW ACCESS, ShowAccessEntitiesQuery, SHOW GRANTS query, SHOW GRANTS, SHOW PRIVILEGES query, SHOW PRIVILEGES, BACKUP or RESTORE query, BACKUP, RESTORE, INSERT query, INSERT INTO, USE query, USE, SET ROLE or SET DEFAULT ROLE query, SET ROLE DEFAULT, SET ROLE, SET DEFAULT ROLE, SET query, SET, SYSTEM query, SYSTEM, CREATE USER or ALTER USER query, ALTER USER, CREATE USER, CREATE ROLE or ALTER ROLE query, ALTER ROLE, CREATE ROLE, CREATE QUOTA or ALTER QUOTA query, ALTER QUOTA, CREATE QUOTA, CREATE ROW POLICY or ALTER ROW POLICY query, ALTER POLICY, ALTER ROW POLICY, CREATE POLICY, CREATE ROW POLICY, CREATE SETTINGS PROFILE or ALTER SETTINGS PROFILE query, ALTER SETTINGS PROFILE, ALTER PROFILE, CREATE SETTINGS PROFILE, CREATE PROFILE, CREATE FUNCTION query, DROP FUNCTION query, CREATE WORKLOAD query, DROP WORKLOAD query, CREATE RESOURCE query, DROP RESOURCE query, CREATE NAMED COLLECTION, DROP NAMED COLLECTION query, Alter NAMED COLLECTION query, ALTER, CREATE INDEX query, DROP INDEX query, DROP access entity query, MOVE access entity query, MOVE, GRANT or REVOKE query, REVOKE, GRANT, CHECK GRANT, CHECK GRANT, EXTERNAL DDL query, EXTERNAL DDL FROM, TCL query, BEGIN TRANSACTION, START TRANSACTION, COMMIT, ROLLBACK, SET TRANSACTION SNAPSHOT, Delete query, DELETE. (SYNTAX_ERROR) (version 24.11.1.2557 (official build))
+
+
+
+Traceback (most recent call last):
+  File "C:\Users\PIYUSH\Desktop\Chatbot\app.py", line 88, in main
+    response = db_chain.run(user_input)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 606, in run
+    return self(args[0], callbacks=callbacks, tags=tags, metadata=metadata)[
+           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 389, in __call__
+    return self.invoke(
+           ~~~~~~~~~~~^
+        inputs,
+        ^^^^^^^
+    ...<2 lines>...
+        include_run_info=include_run_info,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 170, in invoke
+    raise e
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 160, in invoke
+    self._call(inputs, run_manager=run_manager)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_experimental\sql\base.py", line 204, in _call
+    raise exc
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_experimental\sql\base.py", line 149, in _call
+    result = self.database.run(sql_cmd)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_community\utilities\sql_database.py", line 510, in run
+    result = self._execute(
+        command, fetch, parameters=parameters, execution_options=execution_options
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_community\utilities\sql_database.py", line 475, in _execute
+    cursor = connection.execute(
+        command,
+        parameters,
+        execution_options=execution_options,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1416, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 516, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise exc_info[1].with_traceback(exc_info[2])
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\base.py", line 488, in do_execute
+    cursor.execute(statement, parameters, context=context)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\http\connector.py", line 133, in execute
+    self._process_response(response_gen)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\http\connector.py", line 232, in _process_response
+    self._columns = next(response, None)
+                    ~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\http\transport.py", line 133, in execute
+    r = self._send(query, params=params, stream=True)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\http\transport.py", line 179, in _send
+    raise DatabaseException(orig)
+clickhouse_sqlalchemy.exceptions.DatabaseException: Orig exception: Code: 62. DB::Exception: Syntax error: failed at position 1 ('```clickhouse
+SELECT COUNT(*)
+FROM Output_BRCP
+WHERE Issue_Identification LIKE '%Cashback Discrepancy%' AND Execution_Date >= today() - 15;
+```') (line 1, col 1): ```clickhouse
+SELECT COUNT(*)
+FROM Output_BRCP
+WHERE Issue_Identification LIKE '%Cashback Discrepancy%' AND Execution_Date >= today() - 15;
+```. Expected one of: Query, Query with output, EXPLAIN, EXPLAIN, SELECT query, possibly with UNION, list of union elements, SELECT query, subquery, possibly with UNION, SELECT subquery, SELECT query, WITH, FROM, SELECT, SHOW CREATE QUOTA query, SHOW CREATE, SHOW [FULL] [TEMPORARY] TABLES|DATABASES|CLUSTERS|CLUSTER|MERGES 'name' [[NOT] [I]LIKE 'str'] [LIMIT expr], SHOW, SHOW COLUMNS query, SHOW ENGINES query, SHOW ENGINES, SHOW FUNCTIONS query, SHOW FUNCTIONS, SHOW INDEXES query, SHOW SETTING query, SHOW SETTING, EXISTS or SHOW CREATE query, EXISTS, DESCRIBE FILESYSTEM CACHE query, DESCRIBE, DESC, DESCRIBE query, SHOW PROCESSLIST query, SHOW PROCESSLIST, CREATE TABLE or ATTACH TABLE query, CREATE, ATTACH, REPLACE, CREATE DATABASE query, CREATE VIEW query, CREATE DICTIONARY, CREATE LIVE VIEW query, CREATE WINDOW VIEW query, ALTER query, ALTER TABLE, ALTER TEMPORARY TABLE, ALTER DATABASE, RENAME query, RENAME DATABASE, RENAME TABLE, EXCHANGE TABLES, RENAME DICTIONARY, EXCHANGE DICTIONARIES, RENAME, DROP query, DROP, DETACH, TRUNCATE, UNDROP query, UNDROP, CHECK ALL TABLES, CHECK TABLE, KILL QUERY query, KILL, OPTIMIZE query, OPTIMIZE TABLE, WATCH query, WATCH, SHOW ACCESS query, SHOW ACCESS, ShowAccessEntitiesQuery, SHOW GRANTS query, SHOW GRANTS, SHOW PRIVILEGES query, SHOW PRIVILEGES, BACKUP or RESTORE query, BACKUP, RESTORE, INSERT query, INSERT INTO, USE query, USE, SET ROLE or SET DEFAULT ROLE query, SET ROLE DEFAULT, SET ROLE, SET DEFAULT ROLE, SET query, SET, SYSTEM query, SYSTEM, CREATE USER or ALTER USER query, ALTER USER, CREATE USER, CREATE ROLE or ALTER ROLE query, ALTER ROLE, CREATE ROLE, CREATE QUOTA or ALTER QUOTA query, ALTER QUOTA, CREATE QUOTA, CREATE ROW POLICY or ALTER ROW POLICY query, ALTER POLICY, ALTER ROW POLICY, CREATE POLICY, CREATE ROW POLICY, CREATE SETTINGS PROFILE or ALTER SETTINGS PROFILE query, ALTER SETTINGS PROFILE, ALTER PROFILE, CREATE SETTINGS PROFILE, CREATE PROFILE, CREATE FUNCTION query, DROP FUNCTION query, CREATE WORKLOAD query, DROP WORKLOAD query, CREATE RESOURCE query, DROP RESOURCE query, CREATE NAMED COLLECTION, DROP NAMED COLLECTION query, Alter NAMED COLLECTION query, ALTER, CREATE INDEX query, DROP INDEX query, DROP access entity query, MOVE access entity query, MOVE, GRANT or REVOKE query, REVOKE, GRANT, CHECK GRANT, CHECK GRANT, EXTERNAL DDL query, EXTERNAL DDL FROM, TCL query, BEGIN TRANSACTION, START TRANSACTION, COMMIT, ROLLBACK, SET TRANSACTION SNAPSHOT, Delete query, DELETE. (SYNTAX_ERROR) (version 24.11.1.2557 (official build))
+
+
+
+Traceback (most recent call last):
+  File "C:\Users\PIYUSH\Desktop\Chatbot\app.py", line 88, in main
+    response = db_chain.run(user_input)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 606, in run
+    return self(args[0], callbacks=callbacks, tags=tags, metadata=metadata)[
+           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 389, in __call__
+    return self.invoke(
+           ~~~~~~~~~~~^
+        inputs,
+        ^^^^^^^
+    ...<2 lines>...
+        include_run_info=include_run_info,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 170, in invoke
+    raise e
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 160, in invoke
+    self._call(inputs, run_manager=run_manager)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_experimental\sql\base.py", line 204, in _call
+    raise exc
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_experimental\sql\base.py", line 149, in _call
+    result = self.database.run(sql_cmd)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_community\utilities\sql_database.py", line 510, in run
+    result = self._execute(
+        command, fetch, parameters=parameters, execution_options=execution_options
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_community\utilities\sql_database.py", line 475, in _execute
+    cursor = connection.execute(
+        command,
+        parameters,
+        execution_options=execution_options,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1416, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 516, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise exc_info[1].with_traceback(exc_info[2])
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\base.py", line 488, in do_execute
+    cursor.execute(statement, parameters, context=context)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\http\connector.py", line 133, in execute
+    self._process_response(response_gen)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\http\connector.py", line 232, in _process_response
+    self._columns = next(response, None)
+                    ~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\http\transport.py", line 133, in execute
+    r = self._send(query, params=params, stream=True)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\http\transport.py", line 179, in _send
+    raise DatabaseException(orig)
+clickhouse_sqlalchemy.exceptions.DatabaseException: Orig exception: Code: 62. DB::Exception: Syntax error (Multi-statements are not allowed): failed at position 270 (end of query) (line 2, col 17): ;
+
+SELECT COUNT(DISTINCT conversation_id) AS count_cred_app_issues, groupArray(DISTINCT `Issue_Identification`) AS cred_app_issues
+FROM Output_BRCP
+WHERE `Issue. . (SYNTAX_ERROR) (version 24.11.1.2557 (official build))
+
+
+
+Traceback (most recent call last):
+  File "C:\Users\PIYUSH\Desktop\Chatbot\app.py", line 88, in main
+    response = db_chain.run(user_input)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 606, in run
+    return self(args[0], callbacks=callbacks, tags=tags, metadata=metadata)[
+           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 389, in __call__
+    return self.invoke(
+           ~~~~~~~~~~~^
+        inputs,
+        ^^^^^^^
+    ...<2 lines>...
+        include_run_info=include_run_info,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 170, in invoke
+    raise e
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 160, in invoke
+    self._call(inputs, run_manager=run_manager)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_experimental\sql\base.py", line 204, in _call
+    raise exc
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_experimental\sql\base.py", line 149, in _call
+    result = self.database.run(sql_cmd)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_community\utilities\sql_database.py", line 510, in run
+    result = self._execute(
+        command, fetch, parameters=parameters, execution_options=execution_options
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_community\utilities\sql_database.py", line 475, in _execute
+    cursor = connection.execute(
+        command,
+        parameters,
+        execution_options=execution_options,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1416, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 516, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise exc_info[1].with_traceback(exc_info[2])
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\base.py", line 488, in do_execute
+    cursor.execute(statement, parameters, context=context)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\http\connector.py", line 133, in execute
+    self._process_response(response_gen)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\http\connector.py", line 232, in _process_response
+    self._columns = next(response, None)
+                    ~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\http\transport.py", line 133, in execute
+    r = self._send(query, params=params, stream=True)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\http\transport.py", line 179, in _send
+    raise DatabaseException(orig)
+clickhouse_sqlalchemy.exceptions.DatabaseException: Orig exception: Code: 62. DB::Exception: Syntax error (Multi-statements are not allowed): failed at position 245 (end of query) (line 4, col 17): ;
+
+SELECT 
+    groupArrayIf(Reason_for_DSAT, DSAT_result = 'Met') AS ReasonsForDSAT
+FROM autoqa_combined
+WHERE DSAT_result = 'Met';. . (SYNTAX_ERROR) (version 24.11.1.2557 (official build))
+
+
+
+Traceback (most recent call last):
+  File "C:\Users\PIYUSH\Desktop\Chatbot\app.py", line 88, in main
+    response = db_chain.run(user_input)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 606, in run
+    return self(args[0], callbacks=callbacks, tags=tags, metadata=metadata)[
+           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 389, in __call__
+    return self.invoke(
+           ~~~~~~~~~~~^
+        inputs,
+        ^^^^^^^
+    ...<2 lines>...
+        include_run_info=include_run_info,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 170, in invoke
+    raise e
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 160, in invoke
+    self._call(inputs, run_manager=run_manager)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_experimental\sql\base.py", line 204, in _call
+    raise exc
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_experimental\sql\base.py", line 133, in _call
+    sql_cmd = self.llm_chain.predict(
+              ~~~~~~~~~~~~~~~~~~~~~~^
+        callbacks=_run_manager.get_child(),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **llm_inputs,
+        ^^^^^^^^^^^^^
+    ).strip()
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\llm.py", line 318, in predict
+    return self(kwargs, callbacks=callbacks)[self.output_key]
+           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 389, in __call__
+    return self.invoke(
+           ~~~~~~~~~~~^
+        inputs,
+        ^^^^^^^
+    ...<2 lines>...
+        include_run_info=include_run_info,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 170, in invoke
+    raise e
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 160, in invoke
+    self._call(inputs, run_manager=run_manager)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\llm.py", line 126, in _call
+    response = self.generate([inputs], run_manager=run_manager)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\llm.py", line 138, in generate
+    return self.llm.generate_prompt(
+           ~~~~~~~~~~~~~~~~~~~~~~~~^
+        prompts,
+        ^^^^^^^^
+    ...<2 lines>...
+        **self.llm_kwargs,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 860, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 690, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 925, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 961, in _generate
+    response: GenerateContentResponse = _chat_with_retry(
+                                        ~~~~~~~~~~~~~~~~^
+        request=request,
+        ^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        metadata=self.default_metadata,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 196, in _chat_with_retry
+    return _chat_with_retry(**kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 336, in wrapped_f
+    return copy(f, *args, **kw)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 475, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 376, in iter
+    result = action(retry_state)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 418, in exc_check
+    raise retry_exc.reraise()
+          ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 185, in reraise
+    raise self.last_attempt.result()
+          ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.752.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.752.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 478, in __call__
+    result = fn(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 194, in _chat_with_retry
+    raise e
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 178, in _chat_with_retry
+    return generation_method(**kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 835, in generate_content
+    response = rpc(
+        request,
+    ...<2 lines>...
+        metadata=metadata,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\gapic_v1\method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 293, in retry_wrapped_func
+    return retry_target(
+        target,
+    ...<3 lines>...
+        on_error=on_error,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 153, in retry_target
+    _retry_error_helper(
+    ~~~~~~~~~~~~~~~~~~~^
+        exc,
+        ^^^^
+    ...<6 lines>...
+        timeout,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\retry\retry_base.py", line 212, in _retry_error_helper
+    raise final_exc from source_exc
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 144, in retry_target
+    result = target()
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\grpc_helpers.py", line 78, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 Resource has been exhausted (e.g. check quota).
+
+
+Traceback (most recent call last):
+  File "C:\Users\PIYUSH\Desktop\Chatbot\app.py", line 88, in main
+    response = db_chain.run(user_input)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 606, in run
+    return self(args[0], callbacks=callbacks, tags=tags, metadata=metadata)[
+           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 389, in __call__
+    return self.invoke(
+           ~~~~~~~~~~~^
+        inputs,
+        ^^^^^^^
+    ...<2 lines>...
+        include_run_info=include_run_info,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 170, in invoke
+    raise e
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 160, in invoke
+    self._call(inputs, run_manager=run_manager)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_experimental\sql\base.py", line 204, in _call
+    raise exc
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_experimental\sql\base.py", line 133, in _call
+    sql_cmd = self.llm_chain.predict(
+              ~~~~~~~~~~~~~~~~~~~~~~^
+        callbacks=_run_manager.get_child(),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **llm_inputs,
+        ^^^^^^^^^^^^^
+    ).strip()
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\llm.py", line 318, in predict
+    return self(kwargs, callbacks=callbacks)[self.output_key]
+           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 389, in __call__
+    return self.invoke(
+           ~~~~~~~~~~~^
+        inputs,
+        ^^^^^^^
+    ...<2 lines>...
+        include_run_info=include_run_info,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 170, in invoke
+    raise e
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 160, in invoke
+    self._call(inputs, run_manager=run_manager)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\llm.py", line 126, in _call
+    response = self.generate([inputs], run_manager=run_manager)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\llm.py", line 138, in generate
+    return self.llm.generate_prompt(
+           ~~~~~~~~~~~~~~~~~~~~~~~~^
+        prompts,
+        ^^^^^^^^
+    ...<2 lines>...
+        **self.llm_kwargs,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 860, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 690, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 925, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 961, in _generate
+    response: GenerateContentResponse = _chat_with_retry(
+                                        ~~~~~~~~~~~~~~~~^
+        request=request,
+        ^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        metadata=self.default_metadata,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 196, in _chat_with_retry
+    return _chat_with_retry(**kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 336, in wrapped_f
+    return copy(f, *args, **kw)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 475, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 376, in iter
+    result = action(retry_state)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 418, in exc_check
+    raise retry_exc.reraise()
+          ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 185, in reraise
+    raise self.last_attempt.result()
+          ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.752.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.752.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 478, in __call__
+    result = fn(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 194, in _chat_with_retry
+    raise e
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 178, in _chat_with_retry
+    return generation_method(**kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 835, in generate_content
+    response = rpc(
+        request,
+    ...<2 lines>...
+        metadata=metadata,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\gapic_v1\method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 293, in retry_wrapped_func
+    return retry_target(
+        target,
+    ...<3 lines>...
+        on_error=on_error,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 153, in retry_target
+    _retry_error_helper(
+    ~~~~~~~~~~~~~~~~~~~^
+        exc,
+        ^^^^
+    ...<6 lines>...
+        timeout,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\retry\retry_base.py", line 212, in _retry_error_helper
+    raise final_exc from source_exc
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 144, in retry_target
+    result = target()
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\grpc_helpers.py", line 78, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 Resource has been exhausted (e.g. check quota).
+
+
+Traceback (most recent call last):
+  File "C:\Users\PIYUSH\Desktop\Chatbot\app.py", line 88, in main
+    response = db_chain.run(user_input)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 606, in run
+    return self(args[0], callbacks=callbacks, tags=tags, metadata=metadata)[
+           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 389, in __call__
+    return self.invoke(
+           ~~~~~~~~~~~^
+        inputs,
+        ^^^^^^^
+    ...<2 lines>...
+        include_run_info=include_run_info,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 170, in invoke
+    raise e
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 160, in invoke
+    self._call(inputs, run_manager=run_manager)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_experimental\sql\base.py", line 204, in _call
+    raise exc
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_experimental\sql\base.py", line 133, in _call
+    sql_cmd = self.llm_chain.predict(
+              ~~~~~~~~~~~~~~~~~~~~~~^
+        callbacks=_run_manager.get_child(),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **llm_inputs,
+        ^^^^^^^^^^^^^
+    ).strip()
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\llm.py", line 318, in predict
+    return self(kwargs, callbacks=callbacks)[self.output_key]
+           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 389, in __call__
+    return self.invoke(
+           ~~~~~~~~~~~^
+        inputs,
+        ^^^^^^^
+    ...<2 lines>...
+        include_run_info=include_run_info,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 170, in invoke
+    raise e
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 160, in invoke
+    self._call(inputs, run_manager=run_manager)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\llm.py", line 126, in _call
+    response = self.generate([inputs], run_manager=run_manager)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\llm.py", line 138, in generate
+    return self.llm.generate_prompt(
+           ~~~~~~~~~~~~~~~~~~~~~~~~^
+        prompts,
+        ^^^^^^^^
+    ...<2 lines>...
+        **self.llm_kwargs,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 860, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 690, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 925, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 961, in _generate
+    response: GenerateContentResponse = _chat_with_retry(
+                                        ~~~~~~~~~~~~~~~~^
+        request=request,
+        ^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        metadata=self.default_metadata,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 196, in _chat_with_retry
+    return _chat_with_retry(**kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 336, in wrapped_f
+    return copy(f, *args, **kw)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 475, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 376, in iter
+    result = action(retry_state)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 418, in exc_check
+    raise retry_exc.reraise()
+          ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 185, in reraise
+    raise self.last_attempt.result()
+          ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.752.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.752.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 478, in __call__
+    result = fn(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 194, in _chat_with_retry
+    raise e
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 178, in _chat_with_retry
+    return generation_method(**kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 835, in generate_content
+    response = rpc(
+        request,
+    ...<2 lines>...
+        metadata=metadata,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\gapic_v1\method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 293, in retry_wrapped_func
+    return retry_target(
+        target,
+    ...<3 lines>...
+        on_error=on_error,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 153, in retry_target
+    _retry_error_helper(
+    ~~~~~~~~~~~~~~~~~~~^
+        exc,
+        ^^^^
+    ...<6 lines>...
+        timeout,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\retry\retry_base.py", line 212, in _retry_error_helper
+    raise final_exc from source_exc
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 144, in retry_target
+    result = target()
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\grpc_helpers.py", line 78, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 Resource has been exhausted (e.g. check quota).
+
+
+Traceback (most recent call last):
+  File "C:\Users\PIYUSH\Desktop\Chatbot\app.py", line 88, in main
+    response = db_chain.run(user_input)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 606, in run
+    return self(args[0], callbacks=callbacks, tags=tags, metadata=metadata)[
+           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 389, in __call__
+    return self.invoke(
+           ~~~~~~~~~~~^
+        inputs,
+        ^^^^^^^
+    ...<2 lines>...
+        include_run_info=include_run_info,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 170, in invoke
+    raise e
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 160, in invoke
+    self._call(inputs, run_manager=run_manager)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_experimental\sql\base.py", line 204, in _call
+    raise exc
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_experimental\sql\base.py", line 133, in _call
+    sql_cmd = self.llm_chain.predict(
+              ~~~~~~~~~~~~~~~~~~~~~~^
+        callbacks=_run_manager.get_child(),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **llm_inputs,
+        ^^^^^^^^^^^^^
+    ).strip()
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\llm.py", line 318, in predict
+    return self(kwargs, callbacks=callbacks)[self.output_key]
+           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 389, in __call__
+    return self.invoke(
+           ~~~~~~~~~~~^
+        inputs,
+        ^^^^^^^
+    ...<2 lines>...
+        include_run_info=include_run_info,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 170, in invoke
+    raise e
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 160, in invoke
+    self._call(inputs, run_manager=run_manager)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\llm.py", line 126, in _call
+    response = self.generate([inputs], run_manager=run_manager)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\llm.py", line 138, in generate
+    return self.llm.generate_prompt(
+           ~~~~~~~~~~~~~~~~~~~~~~~~^
+        prompts,
+        ^^^^^^^^
+    ...<2 lines>...
+        **self.llm_kwargs,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 860, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 690, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 925, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 961, in _generate
+    response: GenerateContentResponse = _chat_with_retry(
+                                        ~~~~~~~~~~~~~~~~^
+        request=request,
+        ^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        metadata=self.default_metadata,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 196, in _chat_with_retry
+    return _chat_with_retry(**kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 336, in wrapped_f
+    return copy(f, *args, **kw)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 475, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 376, in iter
+    result = action(retry_state)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 418, in exc_check
+    raise retry_exc.reraise()
+          ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 185, in reraise
+    raise self.last_attempt.result()
+          ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.752.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.752.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 478, in __call__
+    result = fn(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 194, in _chat_with_retry
+    raise e
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 178, in _chat_with_retry
+    return generation_method(**kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 835, in generate_content
+    response = rpc(
+        request,
+    ...<2 lines>...
+        metadata=metadata,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\gapic_v1\method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 293, in retry_wrapped_func
+    return retry_target(
+        target,
+    ...<3 lines>...
+        on_error=on_error,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 153, in retry_target
+    _retry_error_helper(
+    ~~~~~~~~~~~~~~~~~~~^
+        exc,
+        ^^^^
+    ...<6 lines>...
+        timeout,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\retry\retry_base.py", line 212, in _retry_error_helper
+    raise final_exc from source_exc
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 144, in retry_target
+    result = target()
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\grpc_helpers.py", line 78, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 Resource has been exhausted (e.g. check quota).
+
+
+Traceback (most recent call last):
+  File "C:\Users\PIYUSH\Desktop\Chatbot\app.py", line 88, in main
+    response = db_chain.run(user_input)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 606, in run
+    return self(args[0], callbacks=callbacks, tags=tags, metadata=metadata)[
+           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 389, in __call__
+    return self.invoke(
+           ~~~~~~~~~~~^
+        inputs,
+        ^^^^^^^
+    ...<2 lines>...
+        include_run_info=include_run_info,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 170, in invoke
+    raise e
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 160, in invoke
+    self._call(inputs, run_manager=run_manager)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_experimental\sql\base.py", line 204, in _call
+    raise exc
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_experimental\sql\base.py", line 133, in _call
+    sql_cmd = self.llm_chain.predict(
+              ~~~~~~~~~~~~~~~~~~~~~~^
+        callbacks=_run_manager.get_child(),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **llm_inputs,
+        ^^^^^^^^^^^^^
+    ).strip()
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\llm.py", line 318, in predict
+    return self(kwargs, callbacks=callbacks)[self.output_key]
+           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 389, in __call__
+    return self.invoke(
+           ~~~~~~~~~~~^
+        inputs,
+        ^^^^^^^
+    ...<2 lines>...
+        include_run_info=include_run_info,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 170, in invoke
+    raise e
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 160, in invoke
+    self._call(inputs, run_manager=run_manager)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\llm.py", line 126, in _call
+    response = self.generate([inputs], run_manager=run_manager)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\llm.py", line 138, in generate
+    return self.llm.generate_prompt(
+           ~~~~~~~~~~~~~~~~~~~~~~~~^
+        prompts,
+        ^^^^^^^^
+    ...<2 lines>...
+        **self.llm_kwargs,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 860, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 690, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 925, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 961, in _generate
+    response: GenerateContentResponse = _chat_with_retry(
+                                        ~~~~~~~~~~~~~~~~^
+        request=request,
+        ^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        metadata=self.default_metadata,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 196, in _chat_with_retry
+    return _chat_with_retry(**kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 336, in wrapped_f
+    return copy(f, *args, **kw)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 475, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 376, in iter
+    result = action(retry_state)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 418, in exc_check
+    raise retry_exc.reraise()
+          ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 185, in reraise
+    raise self.last_attempt.result()
+          ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.752.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.752.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 478, in __call__
+    result = fn(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 194, in _chat_with_retry
+    raise e
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 178, in _chat_with_retry
+    return generation_method(**kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 835, in generate_content
+    response = rpc(
+        request,
+    ...<2 lines>...
+        metadata=metadata,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\gapic_v1\method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 293, in retry_wrapped_func
+    return retry_target(
+        target,
+    ...<3 lines>...
+        on_error=on_error,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 153, in retry_target
+    _retry_error_helper(
+    ~~~~~~~~~~~~~~~~~~~^
+        exc,
+        ^^^^
+    ...<6 lines>...
+        timeout,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\retry\retry_base.py", line 212, in _retry_error_helper
+    raise final_exc from source_exc
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 144, in retry_target
+    result = target()
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\grpc_helpers.py", line 78, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 Resource has been exhausted (e.g. check quota).
+
+
+Traceback (most recent call last):
+  File "C:\Users\PIYUSH\Desktop\Chatbot\app.py", line 88, in main
+    response = db_chain.run(user_input)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 606, in run
+    return self(args[0], callbacks=callbacks, tags=tags, metadata=metadata)[
+           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 389, in __call__
+    return self.invoke(
+           ~~~~~~~~~~~^
+        inputs,
+        ^^^^^^^
+    ...<2 lines>...
+        include_run_info=include_run_info,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 170, in invoke
+    raise e
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 160, in invoke
+    self._call(inputs, run_manager=run_manager)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_experimental\sql\base.py", line 204, in _call
+    raise exc
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_experimental\sql\base.py", line 133, in _call
+    sql_cmd = self.llm_chain.predict(
+              ~~~~~~~~~~~~~~~~~~~~~~^
+        callbacks=_run_manager.get_child(),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **llm_inputs,
+        ^^^^^^^^^^^^^
+    ).strip()
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\llm.py", line 318, in predict
+    return self(kwargs, callbacks=callbacks)[self.output_key]
+           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 389, in __call__
+    return self.invoke(
+           ~~~~~~~~~~~^
+        inputs,
+        ^^^^^^^
+    ...<2 lines>...
+        include_run_info=include_run_info,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 170, in invoke
+    raise e
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 160, in invoke
+    self._call(inputs, run_manager=run_manager)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\llm.py", line 126, in _call
+    response = self.generate([inputs], run_manager=run_manager)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\llm.py", line 138, in generate
+    return self.llm.generate_prompt(
+           ~~~~~~~~~~~~~~~~~~~~~~~~^
+        prompts,
+        ^^^^^^^^
+    ...<2 lines>...
+        **self.llm_kwargs,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 860, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 690, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 925, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 961, in _generate
+    response: GenerateContentResponse = _chat_with_retry(
+                                        ~~~~~~~~~~~~~~~~^
+        request=request,
+        ^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        metadata=self.default_metadata,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 196, in _chat_with_retry
+    return _chat_with_retry(**kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 336, in wrapped_f
+    return copy(f, *args, **kw)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 475, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 376, in iter
+    result = action(retry_state)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 418, in exc_check
+    raise retry_exc.reraise()
+          ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 185, in reraise
+    raise self.last_attempt.result()
+          ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.752.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.752.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 478, in __call__
+    result = fn(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 194, in _chat_with_retry
+    raise e
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 178, in _chat_with_retry
+    return generation_method(**kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 835, in generate_content
+    response = rpc(
+        request,
+    ...<2 lines>...
+        metadata=metadata,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\gapic_v1\method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 293, in retry_wrapped_func
+    return retry_target(
+        target,
+    ...<3 lines>...
+        on_error=on_error,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 153, in retry_target
+    _retry_error_helper(
+    ~~~~~~~~~~~~~~~~~~~^
+        exc,
+        ^^^^
+    ...<6 lines>...
+        timeout,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\retry\retry_base.py", line 212, in _retry_error_helper
+    raise final_exc from source_exc
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 144, in retry_target
+    result = target()
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\grpc_helpers.py", line 78, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 Resource has been exhausted (e.g. check quota).
+
+
+Traceback (most recent call last):
+  File "C:\Users\PIYUSH\Desktop\Chatbot\app.py", line 88, in main
+    response = db_chain.run(user_input)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 606, in run
+    return self(args[0], callbacks=callbacks, tags=tags, metadata=metadata)[
+           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 389, in __call__
+    return self.invoke(
+           ~~~~~~~~~~~^
+        inputs,
+        ^^^^^^^
+    ...<2 lines>...
+        include_run_info=include_run_info,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 170, in invoke
+    raise e
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 160, in invoke
+    self._call(inputs, run_manager=run_manager)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_experimental\sql\base.py", line 204, in _call
+    raise exc
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_experimental\sql\base.py", line 133, in _call
+    sql_cmd = self.llm_chain.predict(
+              ~~~~~~~~~~~~~~~~~~~~~~^
+        callbacks=_run_manager.get_child(),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **llm_inputs,
+        ^^^^^^^^^^^^^
+    ).strip()
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\llm.py", line 318, in predict
+    return self(kwargs, callbacks=callbacks)[self.output_key]
+           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 389, in __call__
+    return self.invoke(
+           ~~~~~~~~~~~^
+        inputs,
+        ^^^^^^^
+    ...<2 lines>...
+        include_run_info=include_run_info,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 170, in invoke
+    raise e
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 160, in invoke
+    self._call(inputs, run_manager=run_manager)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\llm.py", line 126, in _call
+    response = self.generate([inputs], run_manager=run_manager)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\llm.py", line 138, in generate
+    return self.llm.generate_prompt(
+           ~~~~~~~~~~~~~~~~~~~~~~~~^
+        prompts,
+        ^^^^^^^^
+    ...<2 lines>...
+        **self.llm_kwargs,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 860, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 690, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 925, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 961, in _generate
+    response: GenerateContentResponse = _chat_with_retry(
+                                        ~~~~~~~~~~~~~~~~^
+        request=request,
+        ^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        metadata=self.default_metadata,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 196, in _chat_with_retry
+    return _chat_with_retry(**kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 336, in wrapped_f
+    return copy(f, *args, **kw)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 475, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 376, in iter
+    result = action(retry_state)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 418, in exc_check
+    raise retry_exc.reraise()
+          ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 185, in reraise
+    raise self.last_attempt.result()
+          ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.752.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.752.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 478, in __call__
+    result = fn(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 194, in _chat_with_retry
+    raise e
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 178, in _chat_with_retry
+    return generation_method(**kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 835, in generate_content
+    response = rpc(
+        request,
+    ...<2 lines>...
+        metadata=metadata,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\gapic_v1\method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 293, in retry_wrapped_func
+    return retry_target(
+        target,
+    ...<3 lines>...
+        on_error=on_error,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 153, in retry_target
+    _retry_error_helper(
+    ~~~~~~~~~~~~~~~~~~~^
+        exc,
+        ^^^^
+    ...<6 lines>...
+        timeout,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\retry\retry_base.py", line 212, in _retry_error_helper
+    raise final_exc from source_exc
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 144, in retry_target
+    result = target()
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\grpc_helpers.py", line 78, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 Resource has been exhausted (e.g. check quota).
+
+
+Traceback (most recent call last):
+  File "C:\Users\PIYUSH\Desktop\Chatbot\app.py", line 88, in main
+    response = db_chain.run(user_input)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 606, in run
+    return self(args[0], callbacks=callbacks, tags=tags, metadata=metadata)[
+           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 389, in __call__
+    return self.invoke(
+           ~~~~~~~~~~~^
+        inputs,
+        ^^^^^^^
+    ...<2 lines>...
+        include_run_info=include_run_info,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 170, in invoke
+    raise e
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 160, in invoke
+    self._call(inputs, run_manager=run_manager)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_experimental\sql\base.py", line 204, in _call
+    raise exc
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_experimental\sql\base.py", line 133, in _call
+    sql_cmd = self.llm_chain.predict(
+              ~~~~~~~~~~~~~~~~~~~~~~^
+        callbacks=_run_manager.get_child(),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **llm_inputs,
+        ^^^^^^^^^^^^^
+    ).strip()
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\llm.py", line 318, in predict
+    return self(kwargs, callbacks=callbacks)[self.output_key]
+           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 389, in __call__
+    return self.invoke(
+           ~~~~~~~~~~~^
+        inputs,
+        ^^^^^^^
+    ...<2 lines>...
+        include_run_info=include_run_info,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 170, in invoke
+    raise e
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 160, in invoke
+    self._call(inputs, run_manager=run_manager)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\llm.py", line 126, in _call
+    response = self.generate([inputs], run_manager=run_manager)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\llm.py", line 138, in generate
+    return self.llm.generate_prompt(
+           ~~~~~~~~~~~~~~~~~~~~~~~~^
+        prompts,
+        ^^^^^^^^
+    ...<2 lines>...
+        **self.llm_kwargs,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 860, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 690, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 925, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 961, in _generate
+    response: GenerateContentResponse = _chat_with_retry(
+                                        ~~~~~~~~~~~~~~~~^
+        request=request,
+        ^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        metadata=self.default_metadata,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 196, in _chat_with_retry
+    return _chat_with_retry(**kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 336, in wrapped_f
+    return copy(f, *args, **kw)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 475, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 376, in iter
+    result = action(retry_state)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 418, in exc_check
+    raise retry_exc.reraise()
+          ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 185, in reraise
+    raise self.last_attempt.result()
+          ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.752.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.752.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\tenacity\__init__.py", line 478, in __call__
+    result = fn(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 194, in _chat_with_retry
+    raise e
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 178, in _chat_with_retry
+    return generation_method(**kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 835, in generate_content
+    response = rpc(
+        request,
+    ...<2 lines>...
+        metadata=metadata,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\gapic_v1\method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 293, in retry_wrapped_func
+    return retry_target(
+        target,
+    ...<3 lines>...
+        on_error=on_error,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 153, in retry_target
+    _retry_error_helper(
+    ~~~~~~~~~~~~~~~~~~~^
+        exc,
+        ^^^^
+    ...<6 lines>...
+        timeout,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\retry\retry_base.py", line 212, in _retry_error_helper
+    raise final_exc from source_exc
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 144, in retry_target
+    result = target()
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\google\api_core\grpc_helpers.py", line 78, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 Resource has been exhausted (e.g. check quota).
+
+
+Traceback (most recent call last):
+  File "C:\Users\PIYUSH\Desktop\Chatbot\app.py", line 88, in main
+    response = db_chain.run(user_input)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 606, in run
+    return self(args[0], callbacks=callbacks, tags=tags, metadata=metadata)[
+           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 389, in __call__
+    return self.invoke(
+           ~~~~~~~~~~~^
+        inputs,
+        ^^^^^^^
+    ...<2 lines>...
+        include_run_info=include_run_info,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 170, in invoke
+    raise e
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 160, in invoke
+    self._call(inputs, run_manager=run_manager)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_experimental\sql\base.py", line 204, in _call
+    raise exc
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_experimental\sql\base.py", line 149, in _call
+    result = self.database.run(sql_cmd)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_community\utilities\sql_database.py", line 510, in run
+    result = self._execute(
+        command, fetch, parameters=parameters, execution_options=execution_options
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_community\utilities\sql_database.py", line 475, in _execute
+    cursor = connection.execute(
+        command,
+        parameters,
+        execution_options=execution_options,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1416, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 516, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise exc_info[1].with_traceback(exc_info[2])
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\base.py", line 488, in do_execute
+    cursor.execute(statement, parameters, context=context)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\http\connector.py", line 133, in execute
+    self._process_response(response_gen)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\http\connector.py", line 232, in _process_response
+    self._columns = next(response, None)
+                    ~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\http\transport.py", line 133, in execute
+    r = self._send(query, params=params, stream=True)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\http\transport.py", line 179, in _send
+    raise DatabaseException(orig)
+clickhouse_sqlalchemy.exceptions.DatabaseException: Orig exception: Code: 386. DB::Exception: There is no supertype for types String, Date because some of them are String/FixedString/Enum and some of them are not. (NO_COMMON_TYPE) (version 24.11.1.2557 (official build))
+
+
+
+Traceback (most recent call last):
+  File "C:\Users\PIYUSH\Desktop\Chatbot\app.py", line 88, in main
+    response = db_chain.run(user_input)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 606, in run
+    return self(args[0], callbacks=callbacks, tags=tags, metadata=metadata)[
+           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 389, in __call__
+    return self.invoke(
+           ~~~~~~~~~~~^
+        inputs,
+        ^^^^^^^
+    ...<2 lines>...
+        include_run_info=include_run_info,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 170, in invoke
+    raise e
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 160, in invoke
+    self._call(inputs, run_manager=run_manager)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_experimental\sql\base.py", line 204, in _call
+    raise exc
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_experimental\sql\base.py", line 149, in _call
+    result = self.database.run(sql_cmd)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_community\utilities\sql_database.py", line 510, in run
+    result = self._execute(
+        command, fetch, parameters=parameters, execution_options=execution_options
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_community\utilities\sql_database.py", line 475, in _execute
+    cursor = connection.execute(
+        command,
+        parameters,
+        execution_options=execution_options,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1416, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 516, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise exc_info[1].with_traceback(exc_info[2])
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\base.py", line 488, in do_execute
+    cursor.execute(statement, parameters, context=context)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\http\connector.py", line 133, in execute
+    self._process_response(response_gen)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\http\connector.py", line 232, in _process_response
+    self._columns = next(response, None)
+                    ~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\http\transport.py", line 133, in execute
+    r = self._send(query, params=params, stream=True)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\http\transport.py", line 179, in _send
+    raise DatabaseException(orig)
+clickhouse_sqlalchemy.exceptions.DatabaseException: Orig exception: Code: 43. DB::Exception: Argument for function arrayDistinct must be array but it  has type String.: In scope SELECT count(*), arrayStringConcat(arrayDistinct(Issue_Identification), ', ') FROM autoqa_combined WHERE Customer_Issue_Identification LIKE '%CRED Application%'. (ILLEGAL_TYPE_OF_ARGUMENT) (version 24.11.1.2557 (official build))
+
+
+
+Traceback (most recent call last):
+  File "C:\Users\PIYUSH\Desktop\Chatbot\app.py", line 97, in main
+    response = db_chain.run(user_input)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 606, in run
+    return self(args[0], callbacks=callbacks, tags=tags, metadata=metadata)[
+           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 389, in __call__
+    return self.invoke(
+           ~~~~~~~~~~~^
+        inputs,
+        ^^^^^^^
+    ...<2 lines>...
+        include_run_info=include_run_info,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 170, in invoke
+    raise e
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 160, in invoke
+    self._call(inputs, run_manager=run_manager)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_experimental\sql\base.py", line 204, in _call
+    raise exc
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_experimental\sql\base.py", line 149, in _call
+    result = self.database.run(sql_cmd)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_community\utilities\sql_database.py", line 510, in run
+    result = self._execute(
+        command, fetch, parameters=parameters, execution_options=execution_options
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_community\utilities\sql_database.py", line 475, in _execute
+    cursor = connection.execute(
+        command,
+        parameters,
+        execution_options=execution_options,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1416, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 516, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise exc_info[1].with_traceback(exc_info[2])
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\base.py", line 488, in do_execute
+    cursor.execute(statement, parameters, context=context)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\http\connector.py", line 133, in execute
+    self._process_response(response_gen)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\http\connector.py", line 232, in _process_response
+    self._columns = next(response, None)
+                    ~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\http\transport.py", line 133, in execute
+    r = self._send(query, params=params, stream=True)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\http\transport.py", line 179, in _send
+    raise DatabaseException(orig)
+clickhouse_sqlalchemy.exceptions.DatabaseException: Orig exception: Code: 47. DB::Exception: Unknown expression or function identifier `DSAT_result` in scope SELECT count(*) FROM Output_BRCP WHERE (Issue_Identification LIKE '%different offer%') AND (DSAT_result = 'Met'). (UNKNOWN_IDENTIFIER) (version 24.11.1.2557 (official build))
+
+
+
+Traceback (most recent call last):
+  File "C:\Users\PIYUSH\Desktop\Chatbot\app.py", line 97, in main
+    response = db_chain.run(user_input)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 606, in run
+    return self(args[0], callbacks=callbacks, tags=tags, metadata=metadata)[
+           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_core\_api\deprecation.py", line 181, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 389, in __call__
+    return self.invoke(
+           ~~~~~~~~~~~^
+        inputs,
+        ^^^^^^^
+    ...<2 lines>...
+        include_run_info=include_run_info,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 170, in invoke
+    raise e
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain\chains\base.py", line 160, in invoke
+    self._call(inputs, run_manager=run_manager)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_experimental\sql\base.py", line 204, in _call
+    raise exc
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_experimental\sql\base.py", line 149, in _call
+    result = self.database.run(sql_cmd)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_community\utilities\sql_database.py", line 510, in run
+    result = self._execute(
+        command, fetch, parameters=parameters, execution_options=execution_options
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\langchain_community\utilities\sql_database.py", line 475, in _execute
+    cursor = connection.execute(
+        command,
+        parameters,
+        execution_options=execution_options,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1416, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 516, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise exc_info[1].with_traceback(exc_info[2])
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\base.py", line 488, in do_execute
+    cursor.execute(statement, parameters, context=context)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\http\connector.py", line 133, in execute
+    self._process_response(response_gen)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\http\connector.py", line 232, in _process_response
+    self._columns = next(response, None)
+                    ~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\http\transport.py", line 133, in execute
+    r = self._send(query, params=params, stream=True)
+  File "C:\Users\PIYUSH\Desktop\Chatbot\.venv\Lib\site-packages\clickhouse_sqlalchemy\drivers\http\transport.py", line 179, in _send
+    raise DatabaseException(orig)
+clickhouse_sqlalchemy.exceptions.DatabaseException: Orig exception: Code: 47. DB::Exception: Unknown expression or function identifier `DSAT_result` in scope SELECT count(*) FROM Output_BRCP WHERE (Issue_Identification LIKE '%different offer%') AND (DSAT_result = 'Met'). (UNKNOWN_IDENTIFIER) (version 24.11.1.2557 (official build))
+
+
